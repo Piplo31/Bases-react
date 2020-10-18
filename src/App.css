@@ -1,0 +1,78 @@
+
+.tab-inactiva {
+  display: inline-block;
+  list-style: none;
+  margin-bottom: -1px;
+  padding: 0.5rem 0.75rem;
+}
+
+.tab-activa {
+  background-color: white;
+  border: solid black;
+  border-width: 1px 1px 0 1px;
+}
+
+#menu-superior {
+	height: 84px;
+	margin-bottom: 10px;
+}
+
+.tabla{
+	display: table;
+	margin: 0 auto;
+}
+
+ul#lista-horizontal {
+	min-width: 696px;
+	list-style: none;
+	padding-top: 20px;
+	}
+	ul#lista-horizontal li {
+		display: inline;
+  }
+  .logo{
+    margin: auto;
+    display: block;
+  }
+  .consultar{
+    background: white;
+  }
+
+  body {
+    background:green;
+}
+.center
+{
+  
+  width: 75%;
+  background-color: white;
+  position: absolute; 
+  margin: auto;
+  width: 50%;
+  height: 100%;
+  padding: 10px;
+  left:25%;
+}
+table, td, th {
+  border: 1px solid black;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th {
+  height: 50px;
+  background-color: #4CAF50;
+  color: white;
+  
+}
+.boton-consulta{
+  margin: 30px;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
