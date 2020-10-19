@@ -3,7 +3,7 @@ import Tabs from './componentes/Tabs';
 import "./App.css";
 import logo from './CRUD-LOGO.svg';
 import Tabla from './componentes/Tabla';
-
+import Enviar from './componentes/Enviar';
 
 
 function App() {
@@ -19,7 +19,9 @@ function App() {
          </section>
        </div> 
        <div label="Ingresar Paciente"> 
-         aqui va el componente de registro de Paciente 
+       <section className="center">
+         <Enviar/>
+         </section>
        </div> 
        <div label="Modificar Paciente"> 
          aqui va el componente de modificacion
