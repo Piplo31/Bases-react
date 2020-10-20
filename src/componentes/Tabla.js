@@ -1,52 +1,55 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
+import {toast} from 'react-toastify';
+import Enviar from './Enviar';
 
 const Tabla = () => {
   // Declara una nueva variable de estado, que llamaremos "count".
-  
-  const crearTabla = () =>{
-     
-   
-     fetch('http://localhost:3001/basedatos/consultatotalpacientes')
-  .then(response => response.json())
-  .then(data => {
-    
-      var x = document.getElementById("tabla"); 
-        
-      
-      var a="<table border==\"1\"<tr>";
-      var key;
-      for (key in data[0]) {
-        console.log(key);
-          a +='<th>' + key + '</th>';
-      }
-      a +="</tr>";
-      for (var i = 0; i < data.length; i++) {
-          a +='<tr>';
-          var key;
-          for (key in data[i]) {
-          a +='<td>' + data[i][key] + '</td>';
-      }
-          a +='</tr>';
-      }
-      a +="</table>";
-      x.innerHTML=a;
-      
-      console.log(a);
-  
-  });
-    
-    
-  }
-  
 
-  return (
-    <div>
-      <div id="tabla">
-        <h3>Presione el boton para consultar</h3>
-      </div>
-      <button onClick={crearTabla} className="boton-consulta">Consultar</button>
-    </div>
-  );
+    const [list, setList] = useState([])
+    const [currentId, setCurrentId] = useState('');
+
+    useEffect(() => {
+        crearTabla();
+    }, []);
+  
+    const crearTabla = () =>{
+        fetch('http://localhost:3001/basedatos/consultatotalpacientes')
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            setList(data);
+        });
+    }
+
+    const addOrEdit = () => {
+        console.log('desde addOrEdit');
+        crearTabla();
+        setCurrentId('');
+    }
+
+    return (
+        <div className="row">
+            <div className="col-md-5 p-2">
+                <Enviar  {... {addOrEdit, currentId}}/>
+            </div>
+            <div className="col-md-7">
+                {list.map(paciente => (
+                    <div key={paciente.id} className="card mb-1">
+                        <div className="card-body">
+                            <div className="d-flex justify-content-between">
+                                <h5>{paciente.nombre} {paciente.apellido}</h5>
+                                <div>
+                                <i className="material-icons text-danger">close</i>
+                                <i className="material-icons " onClick={() => setCurrentId(paciente.id)}>edit</i>
+                                </div>
+                            </div>
+                            <p>Identificación: {paciente.numid}</p>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
+    );
 }
 
 export default Tabla;

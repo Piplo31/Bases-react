@@ -32,29 +32,29 @@ class Tabs extends Component {
 
     return (
         <div id="menu-superior">
-      <div className="tabla">
-        <ul id="lista-horizontal">
-          {children.map((child) => {
-            const { label } = child.props;
+            <div className="tabla">
+                <ul id="lista-horizontal">
+                    {children.map((child) => {
+                        const { label } = child.props;
 
-            return (
-              <Tab
-                tabActiva={tabActiva}
-                key={label}
-                label={label}
-                onClick={onClickTabItem}
-              />
-            );
-          })}
-        </ul>
-        <div className="tab-content">
-          {children.map((child) => {
-            if (child.props.label !== tabActiva) return undefined;
-            return child.props.children;
-          })}
+                        return (
+                        <Tab
+                            tabActiva={tabActiva}
+                            key={label}
+                            label={label}
+                            onClick={onClickTabItem}
+                        />
+                        );
+                    })}
+                </ul>
+                <div className="tab-content">
+                {children.map((child) => {
+                    if (child.props.label !== tabActiva) return undefined;
+                    return child.props.children;
+                })}
+                </div>
+            </div>
         </div>
-      </div>
-      </div>
     );
   }
 }
