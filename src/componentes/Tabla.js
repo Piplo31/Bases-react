@@ -1,10 +1,8 @@
 import React, {useState, useEffect} from 'react';
-import {toast} from 'react-toastify';
 import Enviar from './Enviar';
 
 const Tabla = () => {
-  // Declara una nueva variable de estado, que llamaremos "count".
-
+  
     const [list, setList] = useState([])
     const [currentId, setCurrentId] = useState('');
 
@@ -23,6 +21,7 @@ const Tabla = () => {
 
     const addOrEdit = () => {
         console.log('desde addOrEdit');
+
         crearTabla();
         setCurrentId('');
     }

@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react';
-import {toast} from 'react-toastify';
+import React, { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 
 
 const Formulario = (props) => {
@@ -38,7 +38,7 @@ const Formulario = (props) => {
             addPaciente();
         }
         setValues({...initialStateValues});
-        props.addOrEdit();
+        setTimeout(props.addOrEdit(), 5000);  
     }
 
     const getPacienteById = (id) => {
