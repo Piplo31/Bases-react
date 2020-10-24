@@ -81,6 +81,8 @@ const Formulario = (props) => {
         });
     }
 
+    
+
     const editPaciente = () => {
         let myHeaders = new Headers();
         const options = {
@@ -104,6 +106,8 @@ const Formulario = (props) => {
             });
         });
     }
+
+    
   
     
     return (

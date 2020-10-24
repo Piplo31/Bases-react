@@ -26,6 +26,33 @@ const Tabla = () => {
         setCurrentId('');
     }
 
+    const onDelete = (id) =>{
+        if(window.confirm("¿Seguro que lo quieres eliminar?"))
+        {
+            console.log(id);
+            
+            let myHeaders = new Headers();
+            const options = {
+                    method: 'DELETE',
+                    headers: myHeaders,
+                    body: new URLSearchParams({
+                    'id': id
+                    }),
+            }
+                
+                
+            fetch('http://localhost:3001/basedatos//eliminar-paciente/'+id, options)
+            .then((res) => res.json())
+            .then((data) => {
+            console.log(data);
+            });
+
+            crearTabla();
+        
+        }
+        
+    }
+
     return (
         <div className="row">
             <div className="col-md-5 p-2">
@@ -38,7 +65,7 @@ const Tabla = () => {
                             <div className="d-flex justify-content-between">
                                 <h5>{paciente.nombre} {paciente.apellido}</h5>
                                 <div>
-                                <i className="material-icons text-danger">close</i>
+                                <i className="material-icons text-danger" onClick={() =>onDelete(paciente.id)}>close</i>
                                 <i className="material-icons " onClick={() => setCurrentId(paciente.id)}>edit</i>
                                 </div>
                             </div>
