@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import Enviar from './Enviar';
+import { toast } from 'react-toastify';
 
 const Tabla = () => {
   
@@ -14,13 +15,13 @@ const Tabla = () => {
         fetch('http://localhost:3001/basedatos/consultatotalpacientes')
         .then(response => response.json())
         .then(data => {
-            console.log(data);
+            //console.log(data);
             setList(data);
         });
     }
 
     const addOrEdit = () => {
-        console.log('desde addOrEdit');
+        //console.log('desde addOrEdit');
 
         crearTabla();
         setCurrentId('');
@@ -29,7 +30,7 @@ const Tabla = () => {
     const onDelete = (id) =>{
         if(window.confirm("¿Seguro que lo quieres eliminar?"))
         {
-            console.log(id);
+            //console.log(id);
             
             let myHeaders = new Headers();
             const options = {
@@ -41,13 +42,18 @@ const Tabla = () => {
             }
                 
                 
-            fetch('http://localhost:3001/basedatos//eliminar-paciente/'+id, options)
+            fetch('http://localhost:3001/basedatos/eliminar-paciente/'+id, options)
             .then((res) => res.json())
             .then((data) => {
-            console.log(data);
+                //console.log(data);
+                toast('Se eliminó al paciente con exito', {
+                    type: 'success',
+                    autoClose: 2000
+                });
+                crearTabla();
             });
 
-            crearTabla();
+           
         
         }
         
@@ -65,8 +71,8 @@ const Tabla = () => {
                             <div className="d-flex justify-content-between">
                                 <h5>{paciente.nombre} {paciente.apellido}</h5>
                                 <div>
-                                <i className="material-icons text-danger" onClick={() =>onDelete(paciente.id)}>close</i>
-                                <i className="material-icons " onClick={() => setCurrentId(paciente.id)}>edit</i>
+                                <i className="material-icons text-danger slc-cursor-pointer" title="Eliminar" onClick={() =>onDelete(paciente.id)}>close</i>
+                                <i className="material-icons slc-cursor-pointer" title="Editar" onClick={() => setCurrentId(paciente.id)}>edit</i>
                                 </div>
                             </div>
                             <p>Identificación: {paciente.numid}</p>

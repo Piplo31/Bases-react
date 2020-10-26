@@ -29,21 +29,19 @@ const Formulario = (props) => {
    
     const handleSubmit = (event) => {
         event.preventDefault();
-        
-        console.log(values);
-
+        //console.log(values);
         if(props.currentId !== ''){
             editPaciente();
         }else{  
             addPaciente();
         }
         setValues({...initialStateValues});
-        setTimeout(props.addOrEdit(), 5000);  
+        props.addOrEdit();
+        //setTimeout(props.addOrEdit(), 5000);  
     }
 
     const getPacienteById = (id) => {
-        console.log('getPacienteById', id);
-      
+        //console.log('getPacienteById', id);
         let myHeaders = new Headers();
         const options = {
           method: 'GET',
@@ -53,7 +51,7 @@ const Formulario = (props) => {
         fetch('http://localhost:3001/basedatos/consultar-paciente/'+id, options)
           .then((res) => res.json())
           .then((data) => {
-            console.log(data);
+            //console.log(data);
             setValues({...data[0]});
           });
       }
@@ -73,8 +71,8 @@ const Formulario = (props) => {
         fetch('http://localhost:3001/basedatos/insertarpaciente', options)
         .then((res) => res.json())
         .then((data) => {
-            console.log(data);
-            toast('Se registro al paciente con exito', {
+            //console.log(data);
+            toast('Se registró al paciente con exito', {
                 type: 'success',
                 autoClose: 2000
             });
@@ -99,7 +97,7 @@ const Formulario = (props) => {
         fetch('http://localhost:3001/basedatos/actualizar-paciente', options)
         .then((res) => res.json())
         .then((data) => {
-        console.log(data);
+        //console.log(data);
             toast('Se actualizo al paciente con exito', {
                 type: 'success',
                 autoClose: 2000

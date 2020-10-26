@@ -2,6 +2,7 @@ import React from 'react';
 import "./App.css";
 import logo from './CRUD-LOGO.svg';
 import Tabla from './componentes/Tabla';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
 
 function App() {
@@ -11,7 +12,7 @@ function App() {
             <div>
                 <Tabla />
             </div>
-            <oTastContainer />
+            <ToastContainer />
         </div>
     );
 }
