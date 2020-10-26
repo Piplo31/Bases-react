@@ -38,8 +38,8 @@ const Formulario = (props) => {
             addPaciente();
         }
         setValues({...initialStateValues});
-        props.addOrEdit();
-        //setTimeout(props.addOrEdit(), 5000);  
+        //props.addOrEdit();
+        setTimeout(props.addOrEdit(), 5000);  
     }
 
     const getPacienteById = (id) => {
