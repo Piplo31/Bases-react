@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 
+const keys = require('../config/keys');
+
 
 const Formulario = (props) => {
 
@@ -48,7 +50,7 @@ const Formulario = (props) => {
           headers: myHeaders
         }
       
-        fetch('http://localhost:3001/basedatos/consultar-paciente/'+id, options)
+        fetch(keys.apiURL + 'basedatos/consultar-paciente/'+id, options)
           .then((res) => res.json())
           .then((data) => {
             //console.log(data);
@@ -68,7 +70,7 @@ const Formulario = (props) => {
             }),
         }
         
-        fetch('http://localhost:3001/basedatos/insertarpaciente', options)
+        fetch(keys.apiURL + 'basedatos/insertarpaciente', options)
         .then((res) => res.json())
         .then((data) => {
             //console.log(data);
@@ -94,7 +96,7 @@ const Formulario = (props) => {
             }),
         }
         
-        fetch('http://localhost:3001/basedatos/actualizar-paciente', options)
+        fetch(keys.apiURL + 'basedatos/actualizar-paciente', options)
         .then((res) => res.json())
         .then((data) => {
         //console.log(data);

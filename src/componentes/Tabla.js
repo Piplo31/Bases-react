@@ -2,17 +2,20 @@ import React, {useState, useEffect} from 'react';
 import Enviar from './Enviar';
 import { toast } from 'react-toastify';
 
+const keys = require('../config/keys');
+
 const Tabla = () => {
   
     const [list, setList] = useState([])
     const [currentId, setCurrentId] = useState('');
 
     useEffect(() => {
+        console.log('variable => ', keys.apiURL);
         crearTabla();
     }, []);
   
     const crearTabla = () =>{
-        fetch('http://localhost:3001/basedatos/consultatotalpacientes')
+        fetch(keys.apiURL + 'basedatos/consultatotalpacientes')
         .then(response => response.json())
         .then(data => {
             //console.log(data);
@@ -42,7 +45,7 @@ const Tabla = () => {
             }
                 
                 
-            fetch('http://localhost:3001/basedatos/eliminar-paciente/'+id, options)
+            fetch(keys.apiURL + 'basedatos/eliminar-paciente/'+id, options)
             .then((res) => res.json())
             .then((data) => {
                 //console.log(data);
