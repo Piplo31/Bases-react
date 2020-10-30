@@ -37,9 +37,6 @@ const Formulario = (props) => {
         }else{  
             addPaciente();
         }
-        setValues({...initialStateValues});
-        //props.addOrEdit();
-        setTimeout(props.addOrEdit(), 5000);  
     }
 
     const getPacienteById = (id) => {
@@ -78,6 +75,9 @@ const Formulario = (props) => {
                 type: 'success',
                 autoClose: 2000
             });
+
+            setValues({...initialStateValues});
+            props.addOrEdit();
         });
     }
 
@@ -104,6 +104,8 @@ const Formulario = (props) => {
                 type: 'success',
                 autoClose: 2000
             });
+            setValues({...initialStateValues});
+            props.addOrEdit();
         });
     }
 
